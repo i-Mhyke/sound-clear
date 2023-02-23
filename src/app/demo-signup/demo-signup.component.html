@@ -1,0 +1,190 @@
+<!-- <div class="container" *ngIf="state.currentState !== stateEnum.Loading; else loadingTemplate">
+  <div *ngIf="state.currentState !== stateEnum.Successful_SignUp" class="row main">
+    <div *ngIf="state.currentState !== stateEnum.Email_Sent" class="col-md-6">
+      <h2 class="main-header pb-3">
+        {{ state.currentState === stateEnum.Default ? 'RendFx Beta' : 'Welcome Back' }}
+      </h2>
+      <p *ngIf="state.currentState === stateEnum.Default" class="pb-3 main-paragraph">
+        A tool that helps creators produce high quality contents with clear audio. Join the first
+        batch of users to get notified when we launch.
+      </p>
+      <h5 class="font-weight-bold">
+        {{
+          state.currentState === stateEnum.Default
+            ? 'Sign up for beta testing'
+            : 'Kindly confirm your email to complete the process'
+        }}
+      </h5>
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <div class="input-container">
+          <input type="text" placeholder="Your Email" formControlName="email" />
+          <button type="submit">
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
+        <p class="text-danger fs-7 pt-3" *ngIf="state.error.length > 0">{{ state.error }}</p>
+      </form>
+    </div>
+    <div *ngIf="state.currentState === stateEnum.Email_Sent" class="col-md-6 email-sent">
+      <h5 class="font-weight-bold">You're one step away</h5>
+      <h2 class="main-header">Verify Your Email Address</h2>
+      <p class="main-paragraph">
+        To complete your registration process, kindly check your email inbox and click on the
+        verification link in order to verify that your email works.
+      </p>
+    </div>
+    <div class="col-md-6 image-column">
+      <img
+        [src]="
+          state.currentState === stateEnum.Default
+            ? '../../assets/images/podcast.svg'
+            : '../../assets/images/sent-email.svg'
+        "
+        alt="Beta Test Image"
+      />
+    </div>
+  </div>
+  <div *ngIf="state.currentState === stateEnum.Successful_SignUp" class="d-flex main">
+    <div class="text-center py-5">
+      <h2 class="main-header">Thank You For Registering!!</h2>
+      <div class="icon-container py-2"><mat-icon>task_alt</mat-icon></div>
+      <p class="fs-5">You will be notified via email immediately beta testing commences.</p>
+    </div>
+  </div>
+</div> -->
+
+<div class="container" *ngIf="state.currentState !== stateEnum.loading; else loadingTemplate">
+  <div class="main" *ngIf="state.currentState !== stateEnum.successfulSignup">
+    <div class="main-section" *ngIf="state.currentState === stateEnum.default">
+      <div class="content">
+        <h2>Sign Up For Beta</h2>
+        <h5>Interested in trying out Rendfx for free?</h5>
+        <p>
+          We are offering a limited number of individuals the chance to use our platform and all its
+          features for free for the duration of our beta period. If you are interested, please fill
+          out the form below.
+        </p>
+      </div>
+      <hr />
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <div class="text-field">
+          <label for="name">Name</label>
+          <br />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            formControlName="name"
+            placeholder="Enter Your Full Name"
+          />
+          <span
+            class="text-danger fs-7"
+            *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched"
+            >This field is required</span
+          >
+        </div>
+        <div class="text-field">
+          <label for="email">Email</label>
+          <br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            formControlName="email"
+            placeholder="Enter Your Email Address"
+          />
+          <span
+            class="text-danger fs-7"
+            *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched"
+            >This field is required</span
+          >
+          <span class="text-danger fs-7" *ngIf="signupForm.get('email').hasError('email')"
+            >Input valid email</span
+          >
+          <span class="text-danger fs-7 pt-3" *ngIf="state.error.length > 0">{{
+            state.error
+          }}</span>
+        </div>
+        <div class="checkbox-section row m-0">
+          <p class="pt-5">How do you intend to use Rendfx?</p>
+          <p class="text-primary" style="font-weight: 400; font-size: 0.8rem">
+            *Kindly select at least one of the options provided below
+          </p>
+          <div
+            *ngFor="let purpose of purposes; let i = index"
+            class="col-md-6 p-0"
+            formArrayName="checkBoxes"
+          >
+            <!-- <mat-checkbox (change)="fieldsChange($event)" [formControlName]="i" color="warn">{{
+              purpose
+            }}</mat-checkbox> -->
+            <input
+              (change)="fieldsChange($event)"
+              type="checkbox"
+              [id]="purpose"
+              [formControlName]="i"
+              value="purpose"
+            />
+            <label [for]="purpose">{{ purpose }}</label>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button [disabled]="!signupForm.valid || !checkboxValid" type="submit">
+            Confirm Email
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="verify-section row" *ngIf="state.currentState !== stateEnum.default">
+      <div class="content col-md-6">
+        <h2>Verify Your Email Address</h2>
+        <p *ngIf="state.currentState === stateEnum.emailSent">
+          To complete your registration process, kindly check your email inbox and click on the
+          verification link in order to verify that your email works.
+        </p>
+        <form
+          *ngIf="state.currentState === stateEnum.differentDevice"
+          [formGroup]="confirmEmail"
+          (ngSubmit)="onConfirmEmail()"
+        >
+          <h5>Kindly confirm your email to complete the process</h5>
+          <div class="input-container">
+            <input type="text" placeholder="Your Email" formControlName="email" />
+            <button type="submit">
+              <mat-icon>send</mat-icon>
+            </button>
+          </div>
+          <p
+            class="text-danger fs-7"
+            *ngIf="
+              confirmEmail.get('email').hasError('required') && confirmEmail.get('email').touched
+            "
+          >
+            This field is required
+          </p>
+          <p class="text-danger fs-7" *ngIf="confirmEmail.get('email').hasError('email')">
+            Input valid email
+          </p>
+          <p class="text-danger fs-7 pt-3" *ngIf="state.error.length > 0">{{ state.error }}</p>
+        </form>
+      </div>
+      <div class="image col-md-6">
+        <img src="../../assets/images/sent-email.svg" alt="Email Received" />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="state.currentState === stateEnum.successfulSignup" class="d-flex main">
+    <div class="text-center py-5">
+      <h2 class="main-header">Thank You For Registering!!</h2>
+      <div class="icon-container py-2"><mat-icon>task_alt</mat-icon></div>
+      <p class="text-center">You will be notified via email immediately beta testing commences.</p>
+    </div>
+  </div>
+</div>
+<ng-template #loadingTemplate>
+  <div class="loading-container">
+    <div class="spinner-border text-primary" style="width: 100px; height: 100px" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>

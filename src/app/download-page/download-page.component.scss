@@ -1,0 +1,66 @@
+.card {
+  width: 100%;
+  max-width: 640px;
+  // border: 1px solid #a52422;
+  // border-bottom: 7px solid #a52422;
+  border-radius: 10px;
+  box-shadow: 0 10px 17px rgba(100, 100, 100, 0.1);
+  z-index: 5;
+
+  h2 {
+    font-weight: bold;
+    color: #a52422;
+    padding-bottom: 1rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  hr {
+    width: 75%;
+  }
+  button {
+    background-color: transparent;
+    color: #a52422;
+    padding: 0.5rem;
+    width: 10rem;
+    border: 1px solid #a52422;
+    border-radius: 50px;
+    transition: 500ms ease;
+
+    &:hover {
+      background-color: #a52422;
+      color: #ffffff;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+.pricing-page {
+  padding-bottom: 10rem;
+}
+.upload-btn {
+  width: 10rem;
+  padding: 0.5rem;
+  background-color: #a52422;
+  border-radius: 50px;
+
+  .spinner {
+    display: inline-block;
+  }
+}
+.audio {
+  overflow-wrap: break-word;
+}
+.background-slider {
+  ::ng-deep .mat-accent .mat-slider-track-fill,
+  ::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: #a52422;
+  }
+  ::ng-deep .mat-slider {
+    width: 100%;
+  }
+}
+.spinner-container{
+  width: fit-content;
+  margin: 3rem auto;
+}
+

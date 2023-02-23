@@ -1,0 +1,135 @@
+<div class="mt-5">
+  <div class="text-center m-5">
+    <h1 class="font-weight-bold">Swap Audio Background</h1>
+    <p>Change the background of any audio file.</p>
+  </div>
+  <div class="upload-container">
+    <div
+      appDropzone
+      (hovered)="onFileHover($event)"
+      (dropped)="onFileDropped($event)"
+      [class.hovering]="isHovering"
+      class="upload-region text-center mx-auto pb-4"
+      *ngIf="files?.length >= 0 && lessThan(files?.length, 2)"
+    >
+      <div *ngIf="files?.length === 1" class="text-left">
+        <button
+          mat-icon-button
+          (click)="refreshComponent()"
+          matTooltip="Refresh"
+          matTooltipPosition="left"
+          class="back-button"
+        >
+          <mat-icon [ngStyle]="{ 'font-size.rem': 2 }">keyboard_backspace</mat-icon>
+        </button>
+      </div>
+      <input
+        type="file"
+        #fileUploadRegion
+        id="fileUploadRegion"
+        (change)="fileUploadHandler($event.target.files)"
+      />
+      <div class="pt-5">
+        <h4 *ngIf="files?.length === 0">Upload main audio file</h4>
+        <h4 *ngIf="files?.length === 1">Upload background audio file</h4>
+      </div>
+      <div *ngIf="files?.length === 0">
+        <img src="./../../../assets/images/upload-img.svg" width="100" height="140" />
+      </div>
+      <div *ngIf="files?.length === 1" class="upload-audio mx-auto my-4">
+        <app-audio-player [audioUrl]="files[0]?.url"></app-audio-player>
+      </div>
+      <div class="pb-4">
+        <label *ngIf="files?.length === 0" for="fileUploadRegion">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>BROWSE FILES</span>
+        </label>
+        <label *ngIf="files?.length === 1" for="fileUploadRegion" mat-button class="outline mt-5">
+          <mat-icon class="mx-2">add_circle_outline</mat-icon>
+          Select Background
+        </label>
+      </div>
+      <h6>or drop file here</h6>
+    </div>
+    <div *ngIf="files?.length === 2" class="dropped-container mx-auto">
+      <div class="text-center shadow file-container mx-auto">
+        <div *ngIf="percentage > 0 && percentage < 100">
+          <mat-progress-bar [mode]="mode" [value]="percentage"></mat-progress-bar>
+        </div>
+        <div *ngIf="cleaning && percentage === 100">
+          <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="text-right">
+          <button
+            mat-icon-button
+            (click)="refreshComponent()"
+            matTooltip="Refresh"
+            matTooltipPosition="left"
+          >
+            <mat-icon [ngStyle]="{ 'font-size.rem': 2 }">refresh</mat-icon>
+          </button>
+        </div>
+        <div *ngFor="let file of files">
+          <div *ngIf="!cleaned" class="audio my-4 w-75 mx-auto">
+            <div>
+              <app-audio-player [audioUrl]="file?.url"></app-audio-player>
+            </div>
+            <div class="mt-3">
+              <h6 class="font-weight-bold">{{ file?.name | uppercase }}</h6>
+              <p class="file-size">
+                {{ formatBytes(file?.size, 2) }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="mergedURL" class="audio w-75 p-4 mb-3 mx-auto">
+          <div>
+            <app-audio-player [audioUrl]="mergedURL"></app-audio-player>
+          </div>
+          <h5>Amount of background noise.</h5>
+          <div class="d-flex">
+            <div class="flex-grow-1 background-slider">
+              <mat-slider
+                min="0"
+                max="1"
+                color="accent"
+                step="0.1"
+                value="0"
+                (input)="onSliderChangeEnd($event)"
+              ></mat-slider>
+            </div>
+            <p class="mb-0 font-weight-bold" style="line-height: 2.5">
+              {{ sliderPercentage || 0 }}%
+            </p>
+          </div>
+        </div>
+        <div class="my-5">
+          <button
+            *ngIf="!cleaned"
+            class="upload-btn"
+            mat-raised-button
+            [disabled]="cleaning"
+            (click)="swapAudios(files)"
+          >
+            Remove <mat-icon>arrow_forward</mat-icon>
+          </button>
+          <a
+            *ngIf="cleaned"
+            class="upload-btn"
+            mat-raised-button
+            color="primary"
+            [href]="cleanedURL"
+            [download]="'Cleaned_' + files[0].name"
+            target="_blank"
+            [disabled]="loadingmerge"
+          >
+            DOWNLOAD
+            <mat-icon *ngIf="!loadingmerge">cloud_download</mat-icon>
+            <mat-spinner *ngIf="loadingmerge" class="spinner" diameter="25" mode="indeterminate">
+            </mat-spinner>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

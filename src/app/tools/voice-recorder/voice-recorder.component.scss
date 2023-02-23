@@ -1,0 +1,60 @@
+.page-container {
+  width: 100% !important;
+  max-width: 1536px !important;
+  margin: 0 auto;
+}
+.timer-counter-label {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.rec-card {
+  width: 50%;
+  border: none;
+
+  .recorder-btns {
+    button {
+      background-color: white;
+      color: #a52422;
+
+      &:disabled {
+        background-color: #eeeeee;
+      }
+    }
+  }
+}
+.landing-card {
+  width: 100% !important;
+}
+button {
+  margin: 1rem;
+}
+@media (max-width: 992px) {
+  .rec-card {
+    width: 70% !important;
+  }
+  .landing-card {
+    width: 100% !important;
+  }
+}
+@media (max-width: 770px) {
+  .rec-card {
+    width: 85% !important;
+  }
+  .landing-card {
+    width: 100% !important;
+  }
+}
+@media (max-width: 470px) {
+  label {
+    padding: 1rem 0.5rem;
+  }
+  .expand-btn {
+    padding: 0.99rem 0.5rem;
+  }
+  .rec-card {
+    width: 98% !important;
+  }
+  .landing-card {
+    width: 100% !important;
+  }
+}

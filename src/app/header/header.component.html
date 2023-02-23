@@ -1,0 +1,139 @@
+<header id="header-section">
+  <!-- <nav
+    class="navbar navbar-expand-lg pl-3 pl-sm-0"
+    id="navbar"
+    (scroll)="onWindowScroll($event)"
+    [ngClass]="{ 'banner-scroll': scrollTop, 'py-4': !scrollTop }"
+  > -->
+  <nav class="navbar navbar-expand-lg pl-3 pl-sm-0 py-4" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img
+          (click)="backToHome()"
+          class="logo"
+          src="./../../assets/images/RENDFX Cut SVG.svg"
+          width="130"
+          height="50"
+        />
+        <div
+          class="navbar-toggler ml-auto"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img
+            src="./../../assets/images/iconsfolder/open-menu 1.svg"
+            width="30"
+            height="25"
+            alt="menu"
+          />
+        </div>
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-center">
+          <li class="d-flex w-100 justify-content-between mb-5 pl-2 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img
+                (click)="backToHome()"
+                src="../../assets/images/RENDFX Cut SVG.svg"
+                width="100"
+                height="30"
+              />
+            </div>
+            <div>
+              <button
+                mat-icon-button
+                class="navbar-toggler close-button"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <mat-icon class="menu-icon">close</mat-icon>
+              </button>
+            </div>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a
+              class="nav-link px-0 pb-1 underline"
+              [routerLink]="['/home']"
+              routerLinkActive="active-link"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item dropdown mx-4">
+            <a class="nav-link px-0 pb-1 text-center dropdown-toggle" data-toggle="dropdown">
+              Tools
+            </a>
+            <ul class="dropdown-menu">
+              <li data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="dropdown-item" [routerLink]="['/audio']"> Audio Background Tool</a>
+              </li>
+              <li data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="dropdown-item" [routerLink]="['/swap']"> Swap Audio Background </a>
+              </li>
+              <li data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="dropdown-item" [routerLink]="['/video']"> Video Background Tool </a>
+              </li>
+              <li data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="dropdown-item" [routerLink]="['/video-swap']"> Video Sound Swap</a>
+              </li>
+              <li data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="dropdown-item" [routerLink]="['/recorder']"> Voice Recorder </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item mx-2" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a
+              class="nav-link px-0 pb-1 underline"
+              [routerLink]="['/pricing']"
+              routerLinkActive="active-link"
+              >Pricing</a
+            >
+          </li>
+          <li
+            *ngIf="!isLoggedIn"
+            class="nav-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+          >
+            <button [routerLink]="['/login']" class="signup-btn">Login</button>
+          </li>
+          <li
+            *ngIf="isLoggedIn"
+            class="nav-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+          >
+            <button [matMenuTriggerFor]="menu" class="profile-btn">
+              <span *ngIf="currentUser.photoUrl !== null">
+                <img [src]="currentUser.photoUrl" alt="" />
+              </span>
+              <span *ngIf="currentUser.photoUrl === null">
+                {{ userInitials }}
+              </span>
+            </button>
+          </li>
+          <mat-menu #menu="matMenu">
+            <button [routerLink]="['/user/downloads']" mat-menu-item>
+              <mat-icon>file_download</mat-icon>
+              <span>Downloads</span>
+            </button>
+            <button mat-menu-item (click)="logOut()">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+          <!-- <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <button [routerLink]="['/beta-signup']" class="signup-btn">Sign Up For Beta</button>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

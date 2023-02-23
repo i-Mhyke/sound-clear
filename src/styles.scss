@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  // background-color: #e5e5e5;
+  background-color: #ffffff;
+  color: #2e151b;
+  width: 100%;
+  font-size: 1rem;
+}
+button {
+  font-family: 'Poppins', sans-serif !important;
+  outline: none;
+}
+*,
+button {
+  &:focus {
+    outline: none;
+  }
+}
+.grey-foreground {
+  color: #2f4454;
+}
+
+.grey-background {
+  background-color: #2f4454;
+  color: #ffffff;
+}
+
+.butter-background {
+  background-color: #ffffff;
+  color: #2e151b;
+}
+
+.yellow-background {
+  background-color: #f9c92c;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.fs-1 {
+  font-size: 2rem;
+}
+.fs-2 {
+  font-size: 1.8rem;
+}
+.fs-3 {
+  font-size: 1.6rem;
+}
+.fs-4 {
+  font-size: 1.4rem;
+}
+.fs-5 {
+  font-size: 1.2rem;
+}
+.fs-6 {
+  font-size: 1rem;
+}
+.fs-7 {
+  font-size: 0.8rem;
+}
+.app-primary-btn {
+  font-family: 'Poppins', sans-serif;
+  background-color: transparent;
+  border-radius: 50px;
+  color: #a52422;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 24px;
+  min-width: 12rem;
+  transition: 500ms ease;
+  border: 1px solid #a52422;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: #a52422;
+    color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+.app-secondary-btn {
+  @extend .app-primary-btn;
+  background-color: #a52422;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #a52422;
+  }
+}
+@media (max-width: 480px) {
+  h5 {
+    font-size: 1rem;
+  }
+}

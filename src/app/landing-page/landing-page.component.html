@@ -1,0 +1,246 @@
+<div class="container">
+  <div class="heading-section pb-5">
+    <div class="row header-row my-auto py-4">
+      <div class="col-lg-6 mx-auto my-lg-auto header-side animate__animated animate__fadeInUp">
+        <h1 class="large-header animate__animated animate__fadeInUp">
+          Clear <br />
+          Background <span class="rend-colour">Sounds</span>
+        </h1>
+        <div
+          class="section-header-synopsis animate__animated animate__fadeInUp animate__delay-500ms"
+        >
+          Get Clearer sound quality for your recordings and podcasts
+        </div>
+        <button
+          class="header-btn mr-2 my-lg-4 animate__animated animate__fadeInUp animate__delay-1s"
+          mat-button
+          color="primary"
+          (click)="scroll(testSection)"
+        >
+          <mat-icon>radio_button_checked</mat-icon>
+          Try It
+        </button>
+        <button
+          [routerLink]="['/beta-signup']"
+          mat-button
+          color="primary"
+          class="header-btn outline my-lg-4 animate__animated animate__fadeInUp animate__delay-1s"
+        >
+          <mat-icon>app_registration</mat-icon>
+          Get Access
+        </button>
+      </div>
+      <div
+        class="col-lg-6 text-center image-container animate__animated animate__fadeIn animate__slower"
+      >
+        <img
+          class="header-img animate__animated animate__pulse animate__infinite animate__veryslow"
+          src="./../../assets/images/new_podcast.svg"
+          alt="Header Illustration"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="usage-section">
+  <div class="section-side-image">
+    <img src="../../assets/images/overlap-circles.svg" width="300" height="300" />
+  </div>
+  <div class="section-side-image-left">
+    <img src="../../assets/images/overlap-circles.svg" width="300" height="300" />
+  </div>
+  <div class="container">
+    <h1 class="text-center section-header my-5">Create Sound, Shape Sound...</h1>
+    <div class="row py-5">
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card usage-card">
+          <div class="card-image">
+            <img src="./../../assets/images/iconsfolder/howtouseicon.svg" width="45" height="45" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">How To Use</h5>
+            <p class="card-text">
+              Just drag-and-drop your Audio file and wait for our AI to extract the background
+              noise. It's that simple.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5">
+        <div class="card usage-card">
+          <div class="card-image">
+            <img src="./../../assets/images/iconsfolder/assuranceicon.svg" width="45" height="45" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">Quality Assurance</h5>
+            <p class="card-text">
+              We help you manipulate your sound without altering the quality of your audio file.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5">
+        <div class="card usage-card">
+          <div class="card-image">
+            <img src="./../../assets/images/iconsfolder/fasticon.svg" width="45" height="45" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">Fast</h5>
+            <p class="card-text">Get your enhanced audio files in real time</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5">
+        <div class="card usage-card">
+          <div class="card-image">
+            <img src="./../../assets/images/iconsfolder/secureicon.svg" width="45" height="45" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">Secure</h5>
+            <p class="card-text">
+              Your files are not stored on our server. No one has access to your files and privacy
+              is 100% guaranteed
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5">
+        <div class="card usage-card">
+          <div class="card-image">
+            <img src="./../../assets/images/iconsfolder/easytouseicon.svg" width="45" height="45" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">Easy To Use</h5>
+            <p class="card-text">Ease of use and simplicity for users convenience.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5">
+        <div class="card usage-card">
+          <div class="card-image">
+            <img src="./../../assets/images/iconsfolder/formaticon.svg" width="45" height="45" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">Formats</h5>
+            <p class="card-text">
+              Rendfx supports a wide range of audio files like mp3, m4a, wav, etc.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" #testSection style="scroll-margin-top: 2rem">
+  <div class="control-section pb-4">
+    <h1 class="text-center d-none d-md-block section-header mt-5 mb-3">
+      Take Control of Your Sound
+    </h1>
+    <div class="d-flex flex-lg-row control-content align-items-center justify-content-between">
+      <div class="mx-2 text-center text-md-left content">
+        <h2 class="wow font-weight-bold animate__animated animate__fadeInDown">
+          Create <span class="rend-colour">Amazing Sounds</span> <br />
+          With Endless Possibilities.
+        </h2>
+        <p class="mt-3 wow animate__animated animate__fadeInDown animate__delay-500ms">
+          Test Rendfx now. Create a voice recording not more than one minute and test the AI now for
+          free.
+        </p>
+      </div>
+      <div class="content wow animate__animated animate__fadeIn animate__slow">
+        <!-- <app-voice-recorder inserted="true"></app-voice-recorder> -->
+        <app-recorder inserted="true"></app-recorder>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="works-section pb-4">
+    <h1 class="text-center section-header my-5">How RendFx Works</h1>
+    <div class="row pl-3 pt-4 works-section-row">
+      <div class="col-lg-6 col-md-12">
+        <ol class="steps-list">
+          <li>
+            <h6 class="font-weight-bold pt-3">Upload your audio file</h6>
+            <p class="points-summary">
+              We support a wide variety of audio file formats for our customers convenience.
+            </p>
+          </li>
+          <li>
+            <h6 class="font-weight-bold pt-3">Our AI Gets to Work</h6>
+            <p class="points-summary">
+              Our highly efficient AI powered technology isolates all the sounds in the file,
+              detects and removes all unwanted background sounds.
+            </p>
+          </li>
+          <li>
+            <h6 class="font-weight-bold pt-3">Download your file</h6>
+          </li>
+        </ol>
+      </div>
+      <div class="col-lg-6 pt-5 pb-5 col-md-12 text-center">
+        <img class="my-auto header-img" src="./../../assets/images/podcasts-equipment.svg" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="user-section">
+  <div class="section-side-image">
+    <img src="../../assets/images/overlap-circles.svg" width="300" height="300" />
+  </div>
+  <div class="section-side-image-left">
+    <img src="../../assets/images/overlap-circles.svg" width="300" height="300" />
+  </div>
+  <div class="container mt-5">
+    <h1 class="section-header pb-5 text-center">For individuals and creatives</h1>
+    <div class="row">
+      <div class="col-md-6 pt-5">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Personal Use </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>You can work from home without worrying about background noise.</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="col-md-6 pt-5">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Podcasters </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Create amazing podcasts and video recordings for your audience.</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="col-md-6 pt-5">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Online Tutors </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Create noise free courses for your students anywhere.</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="col-md-6 pt-5">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Musicians </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Extract sounds from a song that you like.</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="explore-section">
+  <div class="container text-center wow animate__animated animate__fadeInDown animate__slow">
+    <h4 class="font-weight-bold">Explore endless possibilities with RendFx</h4>
+    <p class="py-3">RendFx is breaking every boundary imaginable with sound enhancement</p>
+    <button mat-button class="header-btn outline" (click)="scroll(testSection)">Test RendFx</button>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container downloads-page">
+  <div class="header-section">
+    <h3>Downloads</h3>
+  </div>
+  <div>
+    <div *ngFor="let item of data?.files" class="card w-full shadow p-3 file-card">
+      <div class="play-btn-section">
+        <button [routerLink]="['/download', item.foreground + '+' + item.background]">
+          <mat-icon>play_circle_outline</mat-icon>
+        </button>
+      </div>
+      <div class="main-section">
+        <h6>{{ item.mainFile }}</h6>
+        <div class="main-details">
+          <p><mat-icon>hourglass_top</mat-icon> 0:45</p>
+          <p><mat-icon>save</mat-icon> 450 kb</p>
+        </div>
+      </div>
+      <div class="more-menu">
+        <button class="more-trigger-btn" [matMenuTriggerFor]="downloadMenu">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #downloadMenu="matMenu">
+          <button (click)="deleteFileFromUserProfile(item)" mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button
+            [routerLink]="['/download', item.foreground + '+' + item.background]"
+            mat-menu-item
+          >
+            <mat-icon>file_download</mat-icon>
+            <span>Download</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <div *ngIf="!loading && !data.files.length" class="text-center">
+      <h3>No Records Found</h3>
+    </div>
+    <div *ngIf="loading" class="text-center">
+      <div class="spinner-container">
+        <mat-spinner color="warn" class="spinner" mode="indeterminate"> </mat-spinner>
+      </div>
+      <h4 class="my-4">Getting files</h4>
+    </div>
+  </div>
+</div>

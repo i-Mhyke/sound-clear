@@ -1,0 +1,59 @@
+<div class="mt-5">
+  <div class="text-center m-5">
+    <h1 class="font-weight-bold">Background Removal Tool</h1>
+    <p>
+      Let's help you create great audio files free from background noise for your podcasts,
+      presentations and musical recordings.
+    </p>
+  </div>
+  <div class="upload-container">
+    <div
+      appDropzone
+      (hovered)="onFileHover($event)"
+      (dropped)="onFileDropped($event)"
+      [class.hovering]="isHovering"
+      class="upload-region text-center mx-auto pb-4"
+      *ngIf="!fileDropped"
+    >
+      <input
+        type="file"
+        #fileUploadRegion
+        id="fileUploadRegion"
+        (change)="fileUploadHandler($event.target.files)"
+      />
+      <div>
+        <img src="./../../../assets/images/upload-img.svg" width="100" height="140" />
+      </div>
+      <div class="pb-4">
+        <label for="fileUploadRegion">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>BROWSE FILES</span>
+        </label>
+        <!-- <mat-divider [vertical]="true"></mat-divider> -->
+        <!-- <label class="expand-btn" [matMenuTriggerFor]="menu">
+          <img src="./../../../assets/images/iconsfolder/dropdown1.svg" width="16" height="16" />
+        </label> -->
+        <!-- <mat-menu #menu="matMenu" xPosition="before" class="pr-5 pl-1 mt-1">
+          <a mat-menu-item (click)="openDrive()" class="drive-btn">
+            <img
+              src="./../../../assets/images/iconsfolder/google-drive.svg"
+              width="25"
+              height="25"
+            />
+            <span class="ml-3">From Drive</span>
+          </a>
+          <a mat-menu-item [routerLink]="['/recorder']" class="record-btn">
+            <mat-icon>mic</mat-icon>
+            <span>Record</span>
+          </a>
+        </mat-menu> -->
+      </div>
+      <h6>or drop file here</h6>
+    </div>
+    <div *ngIf="fileDropped" class="dropped-container mx-auto">
+      <div *ngFor="let item of files" class="text-center shadow file-container mx-auto">
+        <app-upload-handler [file]="item" [blob]="audioBlob"></app-upload-handler>
+      </div>
+    </div>
+  </div>
+</div>

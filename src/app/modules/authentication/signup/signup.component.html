@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="login-container">
+    <h5 class="sign-text my-4">Sign Up</h5>
+    <form [formGroup]="signUpForm" (ngSubmit)="submitForm()">
+      <button (click)="signupWithGoogle()" mat-stroked-button class="w-100 mb-2 p-1">
+        <img src="../../../../assets/images/google-icon.svg" width="36" /> Signup with google
+      </button>
+      <div class="divider-container">
+        <p>or</p>
+      </div>
+      <mat-form-field appearance="outline" [ngStyle]="{ 'width.%': 100 }">
+        <mat-label>Full Name</mat-label>
+        <input
+          class="white-icon"
+          matInput
+          placeholder="Full Name"
+          formControlName="fullName"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" [ngStyle]="{ 'width.%': 100 }">
+        <mat-label>Email</mat-label>
+        <input
+          class="white-icon"
+          matInput
+          placeholder="Email"
+          formControlName="email"
+          required
+          email
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" [ngStyle]="{ 'width.%': 100 }">
+        <mat-label>Password</mat-label>
+        <input
+          class="white-icon"
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+          required
+        />
+        <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">
+          {{ hide ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" [ngStyle]="{ 'width.%': 100 }">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          class="white-icon"
+          matInput
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+          [type]="hide ? 'password' : 'text'"
+          required
+        />
+        <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">
+          {{ hide ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error *ngIf="signUpForm.hasError('notSame')"> Your passwords do not match. </mat-error>
+      </mat-form-field>
+      <button type="submit" class="app-secondary-btn w-100 mb-3 mt-3">Create Account</button>
+    </form>
+    <div class="text-right my-3">
+      <p>
+        Already have an account? <a class="signup-link ml-2" [routerLink]="['/login']">Login</a>
+      </p>
+    </div>
+  </div>
+</div>

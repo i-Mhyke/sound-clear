@@ -1,0 +1,120 @@
+.downloads-page {
+  padding-bottom: 10rem;
+
+  .header-section {
+    margin: 5rem 0;
+    border-bottom: 1px solid #c4c4c4;
+    h3 {
+      position: relative;
+      width: fit-content;
+      padding: 0 15px;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -11px;
+        left: 0;
+        background: #a52422;
+      }
+    }
+  }
+
+  .file-card {
+    border-radius: 5px;
+    border-bottom: 5px solid #a52422;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    word-break: break-all;
+    margin-bottom: 1.5rem;
+
+    .play-btn-section {
+      margin-right: 1rem;
+      button {
+        background: transparent;
+        border: 1px solid transparent;
+        width: 60px;
+        height: 60px;
+
+        mat-icon {
+          width: 100%;
+          height: 100%;
+          font-size: 60px;
+          color: #a52422;
+        }
+      }
+    }
+    .main-section {
+      h6 {
+        padding-right: 2rem;
+      }
+      .main-details {
+        display: flex;
+
+        p {
+          color: #777777;
+          display: flex;
+          align-items: center;
+          margin-right: 1.5rem;
+          margin-bottom: 0px;
+          font-size: 0.9rem;
+
+          mat-icon {
+            margin-right: 0.3rem;
+            color: rgb(73, 73, 73);
+          }
+        }
+      }
+    }
+    .more-menu {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      .more-trigger-btn {
+        display: flex;
+        align-items: center;
+        background: transparent;
+        border: 1px solid #b4b4b4;
+        border-radius: 10rem;
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+  .spinner-container {
+    width: fit-content;
+    margin: 3rem auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .downloads-page {
+    .header-section {
+      margin: 2rem 0;
+    }
+    .file-card {
+      .play-btn-section {
+        margin-right: 0.5rem;
+        button {
+          width: 40px;
+          height: 40px;
+
+          mat-icon {
+            font-size: 40px;
+          }
+        }
+      }
+      .main-section {
+        .main-details {
+          p {
+            margin-right: 1rem;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

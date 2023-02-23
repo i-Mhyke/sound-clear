@@ -1,0 +1,37 @@
+.player-container {
+  width: 100%;
+  max-width: 700px;
+  border: 0.5px solid rgb(216, 216, 216);
+  border-radius: 5px;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.12);
+  padding-bottom: 10px;
+
+  .player-slider {
+    ::ng-deep .mat-primary .mat-slider-track-fill,
+    ::ng-deep .mat-primary .mat-slider-thumb {
+      background-color: #f10905;
+    }
+
+    ::ng-deep .mat-slider {
+      width: 100%;
+      height: 0;
+    }
+  }
+  .time-value {
+    font-size: 0.9rem;
+  }
+  .play-btn {
+    margin: 10px 5px 0px 0px;
+    mat-icon {
+      font-size: 2.5rem;
+      color: #a52422;
+    }
+  }
+  .vol-btn {
+    margin-top: 10px;
+    mat-icon {
+      font-size: 1.5rem;
+      color: #4f4f4f;
+    }
+  }
+}

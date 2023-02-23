@@ -1,0 +1,41 @@
+<div class="text-center">
+  <div class="player-container row mx-0">
+    <div class="col-2 p-0">
+      <a
+        mat-icon-button
+        class="play-btn"
+        *ngIf="!state?.playing"
+        [disabled]="state?.error"
+        (click)="play()"
+      >
+        <mat-icon>play_circle_outline</mat-icon>
+      </a>
+      <a mat-icon-button class="play-btn" *ngIf="state?.playing" (click)="pause()">
+        <mat-icon>pause_circle_outline</mat-icon>
+      </a>
+    </div>
+    <div class="col-8 p-0 player-slider">
+      <mat-slider
+        min="0"
+        [max]="state?.duration"
+        color="primary"
+        step="1"
+        [value]="state?.currentTime"
+        (input)="onSliderChangeEnd($event)"
+        [disabled]="state?.error"
+      ></mat-slider>
+      <div class="d-flex justify-content-between mt-3">
+        <span class="time-value text-left">{{ state?.readableCurrentTime }}</span>
+        <span class="time-value text-right">{{ state?.readableDuration }}</span>
+      </div>
+    </div>
+    <div class="col-2 p-0">
+      <a mat-icon-button class="vol-btn" *ngIf="!state?.mute" (click)="mute()">
+        <mat-icon>volume_up</mat-icon>
+      </a>
+      <a mat-icon-button class="vol-btn" *ngIf="state?.mute" (click)="unmute()">
+        <mat-icon>volume_off</mat-icon>
+      </a>
+    </div>
+  </div>
+</div>

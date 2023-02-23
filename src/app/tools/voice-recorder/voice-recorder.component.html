@@ -1,0 +1,52 @@
+<div class="page-container">
+  <div *ngIf="!inserted" class="text-center mt-5">
+    <h3>Start Recording</h3>
+    <p>Create your audio recording right here on the app.</p>
+  </div>
+  <div class="my-5 pb-5" [ngClass]="{ 'm-0 p-0': inserted }">
+    <div
+      class="card rec-card shadow mx-auto p-3"
+      [ngClass]="{ 'landing-card': inserted }"
+      *ngIf="!recordEnded"
+    >
+      <div class="card-body text-center">
+        <div>
+          <div class="timer-counter-label">
+            <div *ngIf="counter; else elseBlock">{{ counter }}</div>
+            <ng-template #elseBlock> 00:00:00 </ng-template>
+          </div>
+          <div class="my-4">
+            <img src="../../../assets/images/mic-shades.svg" width="150" />
+            <!-- <img src="../../../assets/images/iconsfolder/podcastIconVoice.svg" width="100" /> -->
+          </div>
+          <div class="m-2 recorder-btns">
+            <button [disabled]="recording" mat-mini-fab color="primary" (click)="startRecording()">
+              <mat-icon>mic</mat-icon>
+            </button>
+            <button *ngIf="recordPaused" mat-mini-fab color="primary" (click)="pauseRecording()">
+              <mat-icon>play_arrow</mat-icon>
+            </button>
+            <button
+              *ngIf="!recordPaused && recording"
+              mat-mini-fab
+              color="primary"
+              (click)="pauseRecording()"
+            >
+              <mat-icon>pause</mat-icon>
+            </button>
+            <button [disabled]="!recording" mat-mini-fab color="primary" (click)="stopRecording()">
+              <mat-icon>stop</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="rec-card card shadow mx-auto"
+      [ngClass]="{ 'landing-card': inserted }"
+      *ngIf="recordEnded"
+    >
+      <app-upload-handler [file]="file" [blob]="audioBlob" recorded="true"></app-upload-handler>
+    </div>
+  </div>
+</div>

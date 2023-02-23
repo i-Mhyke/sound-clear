@@ -1,0 +1,203 @@
+// .main {
+//   align-items: center;
+//   justify-content: center;
+//   padding: 3rem 0;
+//   margin-bottom: 5rem;
+
+//   .main-header {
+//     font-size: 3.5rem;
+//     font-weight: 700;
+//     letter-spacing: 0.1rem;
+//   }
+//   .main-paragraph {
+//     font-weight: 400;
+//   }
+
+//   .image-column {
+//     img {
+//       width: 100%;
+//     }
+//   }
+//   .input-container {
+//     width: 100%;
+//     display: flex;
+//     box-shadow: 12px 10px 17px rgba(100, 100, 100, 0.1);
+//     z-index: 5;
+//     border-radius: 3px;
+//     border-left: 5px solid #a52422;
+
+//     input {
+//       width: 90%;
+//       border: none;
+//       padding: 1.2rem;
+
+//       &:focus {
+//         outline: none;
+//       }
+//     }
+//     button {
+//       border: none;
+//       background-color: transparent;
+//       transform: rotate(-20deg);
+
+//       mat-icon {
+//         color: #acacac;
+//         font-size: 2rem;
+//       }
+//     }
+//   }
+//   .email-sent {
+//     .main-header {
+//       font-size: 2.6rem;
+//     }
+//   }
+//   .icon-container {
+//     mat-icon {
+//       width: 150px;
+//       height: 150px;
+//       font-size: 150px;
+//       color: #22b662;
+//     }
+//   }
+// }
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0rem 10rem 0rem;
+
+  h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+  }
+  h5 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 1.6rem 0;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #5a5a5a;
+    text-align: justify;
+  }
+
+  .main-section {
+    width: 100%;
+    max-width: 700px;
+
+    form {
+      margin-top: 2rem;
+
+      input[type='text'],
+      input[type='email'] {
+        width: 100%;
+        padding: 1.3rem 1rem;
+        box-shadow: 5px 5px 12px 8px rgba(100, 100, 100, 0.1);
+        z-index: 5;
+        border-radius: 3px;
+        border: none;
+        border-left: 5px solid #a52422;
+      }
+      .text-field {
+        margin-bottom: 2rem;
+        label {
+          font-weight: 600;
+          color: #5a5a5a;
+        }
+      }
+      .checkbox-section {
+        p {
+          align-self: stretch;
+          width: 100%;
+          font-weight: 600;
+          color: #5a5a5a;
+          font-size: 1.1rem;
+        }
+        input[type='checkbox'] {
+          margin-right: 1rem;
+          cursor: pointer;
+        }
+        label {
+          cursor: pointer;
+        }
+      }
+      button[type='submit'] {
+        border-radius: 5rem;
+        padding: 0.8rem 1.8rem;
+        font-size: 0.9rem;
+        background-color: #a52422;
+        color: #ffffff;
+        border: none;
+        margin-top: 1rem;
+
+        &:hover {
+          box-shadow: 12px 10px 17px rgba(100, 100, 100, 0.1);
+        }
+        &:disabled {
+          background-color: #e6e6e6;
+          color: #a52422;
+          cursor: not-allowed;
+          box-shadow: 12px 10px 17px rgba(100, 100, 100, 0.1);
+          z-index: 5;
+        }
+      }
+    }
+  }
+  .verify-section {
+    align-items: center;
+    .content {
+      form {
+        .input-container {
+          width: 100%;
+          display: flex;
+          box-shadow: 12px 10px 17px rgba(100, 100, 100, 0.1);
+          z-index: 5;
+          border-radius: 3px;
+          border-left: 5px solid #a52422;
+
+          input {
+            width: 90%;
+            border: none;
+            padding: 1.2rem;
+
+            &:focus {
+              outline: none;
+            }
+          }
+          button {
+            border: none;
+            background-color: transparent;
+            transform: rotate(-20deg);
+
+            mat-icon {
+              color: #acacac;
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+    .image {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .icon-container {
+    mat-icon {
+      width: 150px;
+      height: 150px;
+      font-size: 150px;
+      color: #22b662;
+    }
+  }
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
